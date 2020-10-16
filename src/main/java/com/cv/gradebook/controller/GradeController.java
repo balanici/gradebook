@@ -18,6 +18,11 @@ public class GradeController {
         this.gradeService = gradeService;
     }
 
+    @GetMapping
+    public ResponseEntity<List<Grade>> getAllGrades() {
+        return new ResponseEntity<>(gradeService.findAll(), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Grade> createGrade(@RequestBody Grade grade) {
         return new ResponseEntity<>(gradeService.create(grade), HttpStatus.CREATED);
@@ -37,10 +42,5 @@ public class GradeController {
     public ResponseEntity<Void> deleteGrade(@PathVariable Long gradeId) {
         gradeService.delete(gradeId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Grade>> getAllGrades() {
-        return new ResponseEntity<>(gradeService.findAll(), HttpStatus.OK);
     }
 }
