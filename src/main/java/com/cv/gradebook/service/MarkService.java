@@ -5,6 +5,7 @@ import com.cv.gradebook.domain.Mark;
 import java.util.List;
 
 public interface MarkService {
+
     Mark create(Mark mark);
 
     Mark findById(Long markId);
